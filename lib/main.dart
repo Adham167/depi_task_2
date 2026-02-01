@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,41 +28,165 @@ class UserInfoView extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Stack(
-              children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/ln.jpg'),
-                  radius: 60,
-                ),
-                Positioned(
-                  bottom: 10,
-                  right: 0,
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor: Color(0xFF64C288),
-                    child: Icon(Icons.check, color: Colors.white, size: 15),
-                  ),
-                ),
-              ],
-            ),
+            ProfileImgAndName(),
+            SizedBox(height: 46),
+            DataWidget(),
+            SizedBox(height: 46),
+            DescriptionWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
-            SizedBox(height: 32),
+class DescriptionWidget extends StatelessWidget {
+  const DescriptionWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          "A Flutter developer focused on building scalable, high-performance mobile applications with clean architecture and modern UI. Experienced in developing cross-platform solutions for Android and iOS with attention to usability and maintainable code.",
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SvgPicture.asset(
+              'assets/images/behance-round-icon.svg',
+              width: 24,
+              height: 24,
+            ),
+            SvgPicture.asset(
+              'assets/images/alphabet-g-icon.svg',
+              width: 24,
+              height: 24,
+            ),
+            SvgPicture.asset(
+              'assets/images/facebook-round-color-icon.svg',
+              width: 24,
+              height: 24,
+            ),
+            SvgPicture.asset(
+              'assets/images/twitter-color-icon.svg',
+              width: 24,
+              height: 24,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class DataWidget extends StatelessWidget {
+  const DataWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
             Text(
-              "Adham Abdelsalam",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+              "Projects",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
             ),
             SizedBox(height: 12),
             Text(
-              "Flutter Developer",
+              "17",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Following",
               style: TextStyle(
-                fontSize: 20,
+                color: Colors.grey,
+                fontSize: 18,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFFD3D3D3),
+              ),
+            ),
+            SizedBox(height: 12),
+            Text(
+              "159",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Followers",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            SizedBox(height: 12),
+            Text(
+              "205",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class ProfileImgAndName extends StatelessWidget {
+  const ProfileImgAndName({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Stack(
+          children: [
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/images/ln.jpg'),
+              radius: 60,
+            ),
+            Positioned(
+              bottom: 10,
+              right: 0,
+              child: CircleAvatar(
+                radius: 12,
+                backgroundColor: Color(0xFF64C288),
+                child: Icon(Icons.check, color: Colors.white, size: 15),
               ),
             ),
           ],
         ),
-      ),
+
+        SizedBox(height: 32),
+        Text(
+          "Adham Abdelsalam",
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+        ),
+        SizedBox(height: 12),
+        Text(
+          "Flutter Developer",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+            color: Colors.grey,
+          ),
+        ),
+      ],
     );
   }
 }
