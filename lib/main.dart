@@ -27,14 +27,33 @@ class UserInfoView extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ProfileImgAndName(),
-            SizedBox(height: 46),
             DataWidget(),
-            SizedBox(height: 46),
             DescriptionWidget(),
+            ViewProfileButton(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ViewProfileButton extends StatelessWidget {
+  const ViewProfileButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 320,
+      decoration: BoxDecoration(
+        border: BoxBorder.all(color: Colors.grey, width: 1),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: const Center(
+        child: Text("View Profile", style: TextStyle(fontSize: 20)),
       ),
     );
   }
